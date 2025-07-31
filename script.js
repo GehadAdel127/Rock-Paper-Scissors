@@ -1,7 +1,11 @@
 const choices =["rock" , "paper" , "scissors"]
 const playerDisplay = document.getElementById("playerDisplay")
 const computerDisplay = document.getElementById("computerDisplay")
-const result = document.getElementById("result")
+const resultDisplay = document.getElementById("result")
+const playerScoreDisplay = document.getElementById("playerScoreDisplay")
+const computerScoreDisplay = document.getElementById("computerScoreDisplay")
+let playerScore = 0
+let computerScore = 0
 
 function playGame(playerChoice){
     const computerChoice = choices[Math.floor(Math.random() * 3)]
@@ -27,4 +31,19 @@ function playGame(playerChoice){
 
     playerDisplay.textContent = `PLAYER : ${playerChoice}`
     computerChoice.textContent = `PLAYER : ${computerChoice}`
+    resultDisplay.textContent = result
+    resultDisplay.classList.remove("greenText" , "redText")
+
+    switch(result){
+        case "YOU WIN!":
+            resultDisplay.classList.add("greenText")
+            playerScore++
+            playerScoreDisplay.textContent = playerScore
+            break;
+        case "YOU LOSE!":
+            resultDisplay.classList.add("redText")
+            computerScore++
+            computerScoreDisplay.textContent = computerScore
+            break;
+    }
 }
